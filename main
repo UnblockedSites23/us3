@@ -1,4 +1,74 @@
-<div style="background-color: black; color: white; padding: 10px; text-align: center;">
-  This version of US3 is outdated, please use 
-  <a href="https://drive.google.com/file/d/1ZICvF5534QVYAydnO68lmOMwkzlb2tTZ/view?usp=sharing" style="color: cyan;">this</a>.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="https://i.ibb.co/VphHJZ9/GC.jpg" type="image/png">
+    <style>
+        /* Style for the alert message */
+        .alert {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Style for the button */
+        .update-button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: cyan;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .update-button:hover {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Alert message at the top -->
+<div class="alert">
+    This version of US3 is outdated, please use 
+    <a href="https://drive.google.com/file/d/1ZICvF5534QVYAydnO68lmOMwkzlb2tTZ/view?usp=sharing" style="color: cyan;">this link</a>.
 </div>
+
+<!-- Button to load the updated version -->
+<button class="update-button" onclick="loadUpdatedVersion()">or click this to load the updated version</button>
+
+<script>
+    // Function to load the updated version when the button is clicked
+    function loadUpdatedVersion() {
+        const updatedUrl = 'https://raw.githubusercontent.com/UnblockedSites23/us3/refs/heads/main/us3.html';
+
+        fetch(updatedUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.open();
+                document.write(data);
+                document.close();
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                document.body.innerHTML = 'Failed to load updated content.';
+            });
+    }
+
+    // No automatic fetch operation here; the update function only runs when the button is clicked
+</script>
+
+</body>
+</html>
